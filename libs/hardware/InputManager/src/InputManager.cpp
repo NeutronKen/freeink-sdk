@@ -23,6 +23,9 @@
 #if FREEINK_DEVICE_PAPERMONO
 #include <PaperMonoBoard.h>
 #endif
+#if FREEINK_DEVICE_PAPERDIY
+#include <PaperDiyBoard.h>
+#endif
 #if defined(TOUCH_PROBE_DEBUG)
 #include <esp_rom_sys.h>
 
@@ -555,6 +558,11 @@ void InputManager::updateDigitalTwoButton(const unsigned long currentTime) {
   // masks directly — applyStateChange() assigns them from the state diff,
   // clobbering direct writes the same tick.
   if (freeink::papermono::pollPowerButtonClicked(currentTime)) {
+    auxiliaryState |= static_cast<uint8_t>(1u << BTN_POWER);
+  }
+#elif FREEINK_DEVICE_PAPERDIY
+  // Same model as Paper Mono: the power button reaches only the M5PM1.
+  if (freeink::paperdiy::pollPowerButtonClicked(currentTime)) {
     auxiliaryState |= static_cast<uint8_t>(1u << BTN_POWER);
   }
 #endif

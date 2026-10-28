@@ -1,0 +1,13 @@
+{
+  "name": "BoardPaperDIY",
+  "version": "0.1.0",
+  "description": "FreeInk board support for M5Stack PaperDIY: parallel-EPD pins (LgfxEpdConfig) and M5PM1 power bring-up.",
+  "keywords": "m5stack, paperdiy, epaper, board",
+  "authors": [{"name": "FreeInk SDK Contributors"}],
+  "dependencies": {
+    "BoardConfig": "*",
+    "EInkDisplay": "*"
+  },
+  "platforms": "espressif32",
+  "frameworks": ["arduino"]
+}
